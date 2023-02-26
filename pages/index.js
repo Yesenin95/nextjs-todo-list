@@ -3,7 +3,7 @@ export default function HomePage() {
   return (
     <>
       <Nav />
-      <div> Welcome to Next.JS! </div>;
+      <div> Welcome to Next.JS! </div>
     </>
   )
 }
