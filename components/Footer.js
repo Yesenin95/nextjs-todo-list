@@ -1,5 +1,5 @@
 export default function Footer(){
    return<>
-     <footer>(c) 2023</footer>
+     <footer>Спасибо за пользование нашим ToDo-List</footer>
    </>
 }
