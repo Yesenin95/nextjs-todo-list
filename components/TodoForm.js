@@ -21,7 +21,6 @@ export default function TodoForm({ addTodo }) {
   return (
     <>
       <Title/>
-
       <div className="todo-form">
         <input type="text" value={title} onChange={handleTitleChange} />
         <button className="add-todo" type="submit" onClick={handleAddTodo}>
