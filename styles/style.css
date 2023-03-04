@@ -96,14 +96,16 @@ h1 {
    transition: all 0.2s ease-in-out;
 }
 
+
 li {
+   background: linear-gradient( #e55c12, #2733da);
+   border-radius: 5px;
    margin-bottom: 10px;
    padding: 10px;
-   border: 1px solid #ccc;
-   border-radius: 5px;
-   background: linear-gradient(to bottom, #ffffff, #e6e6e6);
-   font-family: cursive;
-   font-size: 18px;
+   transform: skew(-15deg);
+   transform-origin: left center;
+   font-size: 24px;
+   color: white;
 }
 
 button[type="submit"]:hover {
