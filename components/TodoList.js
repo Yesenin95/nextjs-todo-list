@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 export default function TodoList({
   todos,
@@ -8,6 +8,38 @@ export default function TodoList({
   moveTodoDown,
   toggleCompleted,
 }) {
+  const handleDeleteTodo = useCallback(
+    (index) => {
+      deleteTodo(index);
+    },
+    [deleteTodo]
+  );
+
+  const handleDeleteCompleted = useCallback(() => {
+    deleteCompleted();
+  }, [deleteCompleted]);
+
+  const handleMoveTodoUp = useCallback(
+    (index) => {
+      moveTodoUp(index);
+    },
+    [moveTodoUp]
+  );
+
+  const handleMoveTodoDown = useCallback(
+    (index) => {
+      moveTodoDown(index);
+    },
+    [moveTodoDown]
+  );
+
+  const handleToggleCompleted = useCallback(
+    (index) => {
+      toggleCompleted(index);
+    },
+    [toggleCompleted]
+  );
+  console.count("TodoList re-renders");
   return (
     <div>
       <ul className="todo-list">
@@ -17,7 +49,7 @@ export default function TodoList({
               type="checkbox"
               className="complete-todo"
               checked={todo.completed}
-              onChange={() => toggleCompleted(index)}
+              onChange={() => handleToggleCompleted(index)}
             />
             <span
               style={{
@@ -27,20 +59,29 @@ export default function TodoList({
               {todo.title}
             </span>
             <div className="buttons">
-              <button className="delete-todo" onClick={() => deleteTodo(index)}>
+              <button
+                className="delete-todo"
+                onClick={() => handleDeleteTodo(index)}
+              >
                 Delete
               </button>
-              <button className="move-up" onClick={() => moveTodoUp(index)}>
+              <button
+                className="move-up"
+                onClick={() => handleMoveTodoUp(index)}
+              >
                 Move Up
               </button>
-              <button className="move-down" onClick={() => moveTodoDown(index)}>
+              <button
+                className="move-down"
+                onClick={() => handleMoveTodoDown(index)}
+              >
                 Move Down
               </button>
             </div>
           </li>
         ))}
       </ul>
-      <button className="delete-selected" onClick={() => deleteCompleted()}>
+      <button className="delete-selected" onClick={handleDeleteCompleted}>
         Delete Completed
       </button>
     </div>

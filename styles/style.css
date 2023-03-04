@@ -85,6 +85,11 @@ h1 {
    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+.todo-form input[type="text"]:focus {
+   outline: none;
+   border: none;
+}
+
 .todo-form button[type="submit"] {
    background-color: #27ae60;
    color: #fff;
@@ -98,7 +103,7 @@ h1 {
 
 
 li {
-   background: linear-gradient( #e55c12, #2733da);
+   background: linear-gradient(#e55c12, #2733da);
    border-radius: 5px;
    margin-bottom: 10px;
    padding: 10px;

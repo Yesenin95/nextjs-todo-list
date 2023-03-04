@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TodoList from "./TodoList";
 import TodoForm from "./TodoForm";
 
-export default function Todo(){
+export default function Todo() {
   const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem("todos"));
+    if (storedTodos) {
+      setTodos(storedTodos);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   const addTodo = (newTodo) => {
     setTodos([...todos, newTodo]);
@@ -39,15 +50,15 @@ export default function Todo(){
       setTodos(newTodos);
     }
   };
+
   const toggleCompleted = (index) => {
     const newTodos = [...todos];
     newTodos[index].completed = !newTodos[index].completed;
     setTodos(newTodos);
   };
-
+console.count("Todo re-renders");
   return (
     <div>
-      
       <TodoForm addTodo={addTodo} />
       <TodoList
         todos={todos}
@@ -59,5 +70,4 @@ export default function Todo(){
       />
     </div>
   );
-};
-
+}
